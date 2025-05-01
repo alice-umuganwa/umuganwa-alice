@@ -170,13 +170,13 @@ public class InternshipManagementSystem {
             return;
         }
         
-        // Generate internship ID
+       
         String internshipId = "INT" + (internships.size() + 1) + "-" + selectedStudent.getUniversity();
         
-        // Select internship type
+       
         String internshipType = ValidationUtil.getValidChoice("Select internship type:", "ULK", "UR", "AUCA", "UK", "Remote");
         
-        // Create the specific internship type
+        
         Internship internship = null;
         
         try {
@@ -201,14 +201,14 @@ public class InternshipManagementSystem {
                         return;
                     }
                     
-                    // Check if internship duration is between 2 and 6 months
+                   
                     long months = ChronoUnit.MONTHS.between(startDate, endDate);
                     if (months < 2 || months > 6) {
                         System.out.println("Error: UR internships must be between 2 and 6 months.");
                         return;
                     }
                     
-                    // Ask if they want an optional second supervisor
+                    
                     boolean needsSecondSupervisor = ValidationUtil.getYesNoInput("Do you want to assign a second supervisor?");
                     Supervisor secondSupervisor = null;
                     
@@ -249,7 +249,7 @@ public class InternshipManagementSystem {
                         return;
                     }
                     
-                    // UK internship requires two supervisors
+                    
                     System.out.println("\nUK internships require a second supervisor (university supervisor).");
                     System.out.println("Available Supervisors for university supervisor:");
                     List<Supervisor> availableSupervisors = new ArrayList<>();
@@ -408,19 +408,19 @@ public class InternshipManagementSystem {
     }
     
     private static void addDemoData() {
-        // Add demo students
+      
         students.add(new Student("S001", "John Doe", "ULK", "john.doe@example.com"));
         students.add(new Student("S002", "Jane Smith", "UR", "jane.smith@example.com"));
         students.add(new Student("S003", "Alex Johnson", "AUCA", "alex.johnson@example.com"));
         students.add(new Student("S004", "Emily Brown", "UK", "emily.brown@example.com"));
         
-        // Add demo supervisors
+        
         supervisors.add(new Supervisor("SUP001", "Dr. Robert Wilson", "PhD", "robert.wilson@example.com"));
         supervisors.add(new Supervisor("SUP002", "Prof. Lisa Taylor", "Masters", "lisa.taylor@example.com"));
         supervisors.add(new Supervisor("SUP003", "Mike Anderson", "Bachelors", "mike.anderson@example.com"));
         supervisors.add(new Supervisor("SUP004", "Dr. Sarah Mitchell", "PhD", "sarah.mitchell@example.com"));
         
-        // Add demo companies
+       
         companies.add(new Company("C001", "Tech Solutions", "IT", "Kigali"));
         companies.add(new Company("C002", "Global Finance", "Finance", "Butare"));
         companies.add(new Company("C003", "Health Partners", "Health", "Gisenyi"));
@@ -431,9 +431,6 @@ public class InternshipManagementSystem {
 class ValidationUtil {
     private static final Scanner scanner = new Scanner(System.in);
     
-    /**
-     * Validates and retrieves a non-empty string input
-     */
     public static String getValidString(String prompt) {
         String input;
         while (true) {
@@ -448,9 +445,7 @@ class ValidationUtil {
         }
     }
     
-    /**
-     * Validates and retrieves an integer within specified range
-     */
+    
     public static int getValidInt(String prompt, int min, int max) {
         while (true) {
             System.out.print(prompt + " ");
@@ -469,9 +464,7 @@ class ValidationUtil {
         }
     }
     
-    /**
-     * Validates and retrieves a double within specified range
-     */
+    
     public static double getValidDouble(String prompt, double min, double max) {
         while (true) {
             System.out.print(prompt + " ");
@@ -490,9 +483,7 @@ class ValidationUtil {
         }
     }
     
-    /**
-     * Validates and retrieves an email address
-     */
+    
     public static String getValidEmail(String prompt) {
         Pattern emailPattern = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
         
@@ -508,9 +499,7 @@ class ValidationUtil {
         }
     }
     
-    /**
-     * Validates and retrieves a choice from a set of options
-     */
+  
     public static String getValidChoice(String prompt, String... options) {
         while (true) {
             System.out.print(prompt + " [" + String.join(", ", options) + "]: ");
@@ -526,9 +515,7 @@ class ValidationUtil {
         }
     }
     
-    /**
-     * Validates and retrieves a date in the format YYYY-MM-DD
-     */
+   
     public static LocalDate getValidDate(String prompt) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         
@@ -544,9 +531,7 @@ class ValidationUtil {
         }
     }
     
-    /**
-     * Validates and retrieves a yes/no response
-     */
+   
     public static boolean getYesNoInput(String prompt) {
         while (true) {
             System.out.print(prompt + " (y/n): ");
@@ -569,7 +554,7 @@ class Student {
     private String university;
     private String email;
     
-    // Constructor
+   
     public Student(String studentId, String fullName, String university, String email) {
         setStudentId(studentId);
         setFullName(fullName);
@@ -577,7 +562,7 @@ class Student {
         setEmail(email);
     }
     
-    // Empty constructor for user input
+    
     public Student() {
         this.studentId = ValidationUtil.getValidString("Enter student ID:");
         this.fullName = ValidationUtil.getValidString("Enter full name:");
@@ -585,7 +570,7 @@ class Student {
         this.email = ValidationUtil.getValidEmail("Enter email:");
     }
     
-    // Getters and setters with validation
+    
     public String getStudentId() {
         return studentId;
     }
@@ -652,7 +637,7 @@ class Supervisor {
     private String qualification;
     private String email;
     
-    // Constructor
+  
     public Supervisor(String supervisorId, String fullName, String qualification, String email) {
         setSupervisorId(supervisorId);
         setFullName(fullName);
@@ -660,7 +645,7 @@ class Supervisor {
         setEmail(email);
     }
     
-    // Empty constructor for user input
+   
     public Supervisor() {
         this.supervisorId = ValidationUtil.getValidString("Enter supervisor ID:");
         this.fullName = ValidationUtil.getValidString("Enter full name:");
@@ -668,7 +653,7 @@ class Supervisor {
         this.email = ValidationUtil.getValidEmail("Enter email:");
     }
     
-    // Getters and setters with validation
+    
     public String getSupervisorId() {
         return supervisorId;
     }
@@ -735,7 +720,7 @@ class Company {
     private String industryType;
     private String location;
     
-    // Constructor
+   
     public Company(String companyId, String name, String industryType, String location) {
         setCompanyId(companyId);
         setName(name);
@@ -743,7 +728,7 @@ class Company {
         setLocation(location);
     }
     
-    // Empty constructor for user input
+ 
     public Company() {
         this.companyId = ValidationUtil.getValidString("Enter company ID:");
         this.name = ValidationUtil.getValidString("Enter company name:");
@@ -751,7 +736,7 @@ class Company {
         this.location = ValidationUtil.getValidString("Enter location:");
     }
     
-    // Getters and setters with validation
+    
     public String getCompanyId() {
         return companyId;
     }
@@ -820,7 +805,7 @@ abstract class Internship {
     private Supervisor supervisor;
     private LocalDate startDate;
     private LocalDate endDate;
-    private String status; // "PENDING", "ONGOING", "COMPLETED"
+    private String status; 
     private List<String> progressNotes;
     
     public Internship(String internshipId, Student student, String companyName, Supervisor supervisor, LocalDate startDate, LocalDate endDate) {
@@ -831,40 +816,40 @@ abstract class Internship {
         setStartDate(startDate);
         setEndDate(endDate);
         
-        // Default status is PENDING
+        
         this.status = "PENDING";
         this.progressNotes = new ArrayList<>();
         
-        // Validate the internship
+       
         validateInternship();
     }
     
-    // Abstract methods
+   
     public abstract void assignSupervisor();
     public abstract void trackProgress();
     public abstract String generateReport();
     
     public void validateInternship() {
-        // Check that start date is before end date
+        
         if (startDate.isAfter(endDate)) {
             throw new IllegalArgumentException("Start date must be before end date");
         }
         
-        // Check minimum duration (6 weeks)
+       
         long weeks = ChronoUnit.WEEKS.between(startDate, endDate);
         if (weeks < 6) {
             throw new IllegalArgumentException("Internship must be at least 6 weeks long");
         }
     }
     
-    // Add a progress note
+   
     public void addProgressNote(String note) {
         if (note != null && !note.trim().isEmpty()) {
             progressNotes.add(note);
         }
     }
     
-    // Update status
+    
     public void updateStatus(String status) {
         if (status != null && (status.equals("PENDING") || status.equals("ONGOING") || status.equals("COMPLETED"))) {
             this.status = status;
@@ -873,7 +858,7 @@ abstract class Internship {
         }
     }
     
-    // Common report format
+    
     protected String getBaseReport() {
         StringBuilder report = new StringBuilder();
         report.append("INTERNSHIP REPORT\n");
@@ -897,7 +882,7 @@ abstract class Internship {
         return report.toString();
     }
     
-    // Getters and setters
+   
     public String getInternshipId() {
         return internshipId;
     }
@@ -989,17 +974,17 @@ class ULKInternship extends Internship {
                          LocalDate startDate, LocalDate endDate) {
         super(internshipId, student, companyName, supervisor, startDate, endDate);
         
-        // Additional validation for ULK internship
+       
         validateULKInternship();
     }
     
     private void validateULKInternship() {
-        // Check that student is from ULK
+        
         if (!getStudent().getUniversity().equals("ULK")) {
             throw new IllegalArgumentException("Student must be from ULK for ULK internship");
         }
         
-        // Check that supervisor has Masters or PhD
+        
         String qualification = getSupervisor().getQualification();
         if (!qualification.equals("Masters") && !qualification.equals("PhD")) {
             throw new IllegalArgumentException("Supervisor must have Masters or PhD qualification for ULK internship");
@@ -1045,17 +1030,17 @@ class URInternship extends Internship {
         super(internshipId, student, companyName, supervisor, startDate, endDate);
         this.secondSupervisor = secondSupervisor;
         
-        // Additional validation for UR internship
+        
         validateURInternship();
     }
     
     private void validateURInternship() {
-        // Check that student is from UR
+       
         if (!getStudent().getUniversity().equals("UR")) {
             throw new IllegalArgumentException("Student must be from UR for UR internship");
         }
         
-        // Check that internship is between 2 and 6 months
+       
         long months = ChronoUnit.MONTHS.between(getStartDate(), getEndDate());
         if (months < 2 || months > 6) {
             throw new IllegalArgumentException("UR internship must be between 2 and 6 months");
@@ -1123,17 +1108,17 @@ class AUCAInternship extends Internship {
         this.communityServiceHours = communityServiceHours;
         this.completedCommunityHours = 0;
         
-        // Additional validation for AUCA internship
+       
         validateAUCAInternship();
     }
     
     private void validateAUCAInternship() {
-        // Check that student is from AUCA
+       
         if (!getStudent().getUniversity().equals("AUCA")) {
             throw new IllegalArgumentException("Student must be from AUCA for AUCA internship");
         }
         
-        // Check that community service hours are positive
+        
         if (communityServiceHours <= 0) {
             throw new IllegalArgumentException("Community service hours must be positive");
         }
@@ -1204,22 +1189,22 @@ class UKInternship extends Internship {
         this.universitySupervisor = universitySupervisor;
         this.englishProficiencyLevel = englishProficiencyLevel;
         
-        // Additional validation for UK internship
+        
         validateUKInternship();
     }
     
     private void validateUKInternship() {
-        // Check that student is from UK
+        
         if (!getStudent().getUniversity().equals("UK")) {
             throw new IllegalArgumentException("Student must be from UK for UK internship");
         }
         
-        // Check that university supervisor is not null
+        
         if (universitySupervisor == null) {
             throw new IllegalArgumentException("UK internship requires a university supervisor");
         }
         
-        // Check that English proficiency level is valid
+        
         if (englishProficiencyLevel == null || !isValidProficiencyLevel(englishProficiencyLevel)) {
             throw new IllegalArgumentException("English proficiency level must be A1, A2, B1, B2, C1, or C2");
         }
@@ -1292,7 +1277,7 @@ class RemoteInternship extends Internship {
         this.communicationPlatform = communicationPlatform;
         this.communicationLog = new ArrayList<>();
         
-        // No additional validation needed for Remote internship as it can be for any university
+       
     }
     
     @Override
@@ -1359,13 +1344,15 @@ class RemoteInternship extends Internship {
     }
 }
 
-// Optional Interface Implementation
+
+
 interface Reportable {
     String generateDetailedReport();
     void exportReport(String format);
 }
 
-// Example of implementing the interface
+
+
 class ReportableInternship implements Reportable {
     private Internship internship;
     
@@ -1386,7 +1373,7 @@ class ReportableInternship implements Reportable {
     @Override
     public void exportReport(String format) {
         System.out.println("Exporting report in " + format + " format...");
-        // In a real application, this would write the report to a file
+        
         System.out.println("Report exported successfully.");
     }
 }

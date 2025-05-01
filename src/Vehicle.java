@@ -1,4 +1,4 @@
-// Abstract Vehicle class
+
 abstract class Vehicle {
     private String vehicleId;
     private String ownerName;
@@ -99,7 +99,6 @@ abstract class Vehicle {
     }
 }
 
-// Car class
 class Car extends Vehicle {
     private boolean isElectric;
     

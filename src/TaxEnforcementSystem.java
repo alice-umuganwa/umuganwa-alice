@@ -518,7 +518,7 @@ public class TaxEnforcementSystem {
         System.out.println("Thank you for using RRA Tax Enforcement System. Goodbye!");
     }
     private static void initializeSampleData() {
-        // Add sample taxpayers
+        
         try {
             Taxpayer individual = new Taxpayer("123456789", "John Doe", false);
             Taxpayer company = new Taxpayer("987654321", "ABC Enterprises Ltd", true);
